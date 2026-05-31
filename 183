@@ -1,0 +1,8 @@
+https://leetcode.com/problems/customers-who-never-order/description/?envType=study-plan-v2&envId=30-days-of-pandas&lang=pythondata
+import pandas as pd
+
+def find_customers(customers: pd.DataFrame, orders: pd.DataFrame) -> pd.DataFrame:
+    merged=customers.merge(orders,left_on='id',right_on='customerId',how='left').rename(columns={'name':'Customers'})
+    result = merged['customerId'].isna()
+    res=merged[result][['Customers']]
+    return res
