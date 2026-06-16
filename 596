@@ -1,0 +1,7 @@
+https://leetcode.com/problems/classes-with-at-least-5-students/description/?envType=study-plan-v2&envId=30-days-of-pandas&lang=pythondata
+import pandas as pd
+
+def find_classes(courses: pd.DataFrame) -> pd.DataFrame:
+
+    grp = courses.groupby('class')['student'].size().reset_index()
+    return grp[grp.student >= 5].iloc[:,[0]]
